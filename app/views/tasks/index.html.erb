@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>タスク一覧</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= task.name %> | <%= task.body %></li>
+  <% end %>
+</ul>
+<br>
+
+<%= form_with(model: @task, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name, "名前" %>
+    <%= form.text_field :name, id: :task_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, "本文" %>
+    <%= form.text_area :body, id: :task_body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Task" %>
+  </div>
+<% end %>
